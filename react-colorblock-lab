@@ -1,0 +1,6 @@
+git init
+git add .
+git commit -m "First commit - ColorBlock with useEffect"
+git branch -M main
+git remote add origin https://github.com/kn24-vrokoman-creator/lab-14/new/main?filename=LICENSE.md
+git push -u origin main
