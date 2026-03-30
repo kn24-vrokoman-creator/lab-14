@@ -1,0 +1,59 @@
+import React, { useState, useEffect } from 'react';
+
+const ColorBlock = () => {
+  const colors = ['red', 'blue', 'green'];
+  const [colorIndex, setColorIndex] = useState(0);
+
+  const changeColor = () => {
+    setColorIndex((prevIndex) => (prevIndex + 1) % colors.length);
+  };
+
+  useEffect(() => {
+    console.log('Колір змінився на:', colors[colorIndex]);
+  }, [colorIndex]);
+
+  const blockStyle = {
+    width: '250px',
+    height: '250px',
+    backgroundColor: colors[colorIndex],
+    margin: '30px auto',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '24px',
+    color: '#fff',
+    fontWeight: 'bold',
+    borderRadius: '15px',
+    transition: 'background-color 0.5s ease',
+    boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+  };
+
+  const buttonStyle = {
+    display: 'block',
+    margin: '0 auto',
+    padding: '12px 25px',
+    fontSize: '16px',
+    backgroundColor: '#333',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  };
+
+  return (
+    <div>
+      <div style={blockStyle}>{colors[colorIndex].toUpperCase()}</div>
+      <button
+        style={buttonStyle}
+        onClick={changeColor}
+        onMouseEnter={(e) => (e.target.style.backgroundColor = '#555')}
+        onMouseLeave={(e) => (e.target.style.backgroundColor = '#333')}
+      >
+        Змінити колір
+      </button>
+    </div>
+  );
+};
+
+export default ColorBlock;
